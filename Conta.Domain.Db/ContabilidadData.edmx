@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CowContabilidadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asientos">
+          <Key>
+            <PropertyRef Name="AsientoID" />
+          </Key>
+          <Property Name="AsientoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Ej" Type="int" Nullable="false" />
+          <Property Name="Nro" Type="int" Nullable="false" />
+          <Property Name="Subd" Type="int" Nullable="false" />
+          <Property Name="CuentaID" Type="int" Nullable="false" />
+          <Property Name="Tl" Type="money" Nullable="false" />
+          <Property Name="Moneda" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detalle" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsientosManuales">
+          <Key>
+            <PropertyRef Name="AsientoManual" />
+          </Key>
+          <Property Name="AsientoManual" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Ej" Type="int" Nullable="false" />
+          <Property Name="Subd" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="AsientoCuadrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="CuentaID" />
+          </Key>
+          <Property Name="CuentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imputable" Type="bit" Nullable="false" />
+          <Property Name="EmpresaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="EmpresaID" />
+          </Key>
+          <Property Name="EmpresaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TipoContabilidadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NomenReferencias">
+          <Key>
+            <PropertyRef Name="Nro" />
+          </Key>
+          <Property Name="Nro" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TipoContabilidadID" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoContabilidades">
+          <Key>
+            <PropertyRef Name="TipoContabilidadID" />
+          </Key>
+          <Property Name="TipoContabilidadID" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_Asientos-Cuentas">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Asientos" Type="Self.Asientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Asientos">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Asientos-NomenReferencias">
+          <End Role="NomenReferencias" Type="Self.NomenReferencias" Multiplicity="1" />
+          <End Role="Asientos" Type="Self.Asientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NomenReferencias">
+              <PropertyRef Name="Nro" />
+            </Principal>
+            <Dependent Role="Asientos">
+              <PropertyRef Name="Nro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Empresas-TipoContabilidades">
+          <End Role="TipoContabilidades" Type="Self.TipoContabilidades" Multiplicity="1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContabilidades">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_NomenReferencias-TipoContabilidades">
+          <End Role="TipoContabilidades" Type="Self.TipoContabilidades" Multiplicity="0..1" />
+          <End Role="NomenReferencias" Type="Self.NomenReferencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContabilidades">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Principal>
+            <Dependent Role="NomenReferencias">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship10">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="EmpresaID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CowContabilidadModelStoreContainer">
+          <EntitySet Name="Asientos" EntityType="Self.Asientos" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="AsientosManuales" EntityType="Self.AsientosManuales" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="NomenReferencias" EntityType="Self.NomenReferencias" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="TipoContabilidades" EntityType="Self.TipoContabilidades" Schema="Contabilidad" store:Type="Tables" />
+          <AssociationSet Name="Fk_Asientos-Cuentas" Association="Self.Fk_Asientos-Cuentas">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Asientos" EntitySet="Asientos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Asientos-NomenReferencias" Association="Self.fk_Asientos-NomenReferencias">
+            <End Role="NomenReferencias" EntitySet="NomenReferencias" />
+            <End Role="Asientos" EntitySet="Asientos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Empresas-TipoContabilidades" Association="Self.Fk_Empresas-TipoContabilidades">
+            <End Role="TipoContabilidades" EntitySet="TipoContabilidades" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_NomenReferencias-TipoContabilidades" Association="Self.Fk_NomenReferencias-TipoContabilidades">
+            <End Role="TipoContabilidades" EntitySet="TipoContabilidades" />
+            <End Role="NomenReferencias" EntitySet="NomenReferencias" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship10" Association="Self.Relationship10">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CowContabilidadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="AsientoID" />
+          </Key>
+          <Property Name="AsientoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ej" Type="Int32" Nullable="false" />
+          <Property Name="Nro" Type="Int32" Nullable="false" />
+          <Property Name="Subd" Type="Int32" Nullable="false" />
+          <Property Name="CuentaID" Type="Int32" Nullable="false" />
+          <Property Name="Tl" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Moneda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.Fk_Asientos_Cuentas" FromRole="Asientos" ToRole="Cuentas" />
+          <NavigationProperty Name="NomenReferencia" Relationship="Self.fk_Asientos_NomenReferencias" FromRole="Asientos" ToRole="NomenReferencias" />
+        </EntityType>
+        <EntityType Name="AsientosManuale">
+          <Key>
+            <PropertyRef Name="AsientoManual" />
+          </Key>
+          <Property Name="AsientoManual" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ej" Type="Int32" Nullable="false" />
+          <Property Name="Subd" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AsientoCuadrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="CuentaID" />
+          </Key>
+          <Property Name="CuentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imputable" Type="Boolean" Nullable="false" />
+          <Property Name="EmpresaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Asientos" Relationship="Self.Fk_Asientos_Cuentas" FromRole="Cuentas" ToRole="Asientos" />
+          <NavigationProperty Name="Empresa" Relationship="Self.Relationship10" FromRole="Cuentas" ToRole="Empresas" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaID" />
+          </Key>
+          <Property Name="EmpresaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoContabilidadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.Relationship10" FromRole="Empresas" ToRole="Cuentas" />
+          <NavigationProperty Name="TipoContabilidade" Relationship="Self.Fk_Empresas_TipoContabilidades" FromRole="Empresas" ToRole="TipoContabilidades" />
+        </EntityType>
+        <EntityType Name="NomenReferencia">
+          <Key>
+            <PropertyRef Name="Nro" />
+          </Key>
+          <Property Name="Nro" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoContabilidadID" Type="Int32" />
+          <NavigationProperty Name="Asientos" Relationship="Self.fk_Asientos_NomenReferencias" FromRole="NomenReferencias" ToRole="Asientos" />
+          <NavigationProperty Name="TipoContabilidade" Relationship="Self.Fk_NomenReferencias_TipoContabilidades" FromRole="NomenReferencias" ToRole="TipoContabilidades" />
+        </EntityType>
+        <EntityType Name="TipoContabilidade">
+          <Key>
+            <PropertyRef Name="TipoContabilidadID" />
+          </Key>
+          <Property Name="TipoContabilidadID" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empresas" Relationship="Self.Fk_Empresas_TipoContabilidades" FromRole="TipoContabilidades" ToRole="Empresas" />
+          <NavigationProperty Name="NomenReferencias" Relationship="Self.Fk_NomenReferencias_TipoContabilidades" FromRole="TipoContabilidades" ToRole="NomenReferencias" />
+        </EntityType>
+        <Association Name="Fk_Asientos_Cuentas">
+          <End Role="Cuentas" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Asientos" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Asientos">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Asientos_NomenReferencias">
+          <End Role="NomenReferencias" Type="Self.NomenReferencia" Multiplicity="1" />
+          <End Role="Asientos" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NomenReferencias">
+              <PropertyRef Name="Nro" />
+            </Principal>
+            <Dependent Role="Asientos">
+              <PropertyRef Name="Nro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship10">
+          <End Role="Empresas" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="EmpresaID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Empresas_TipoContabilidades">
+          <End Role="TipoContabilidades" Type="Self.TipoContabilidade" Multiplicity="1" />
+          <End Role="Empresas" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContabilidades">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_NomenReferencias_TipoContabilidades">
+          <End Role="TipoContabilidades" Type="Self.TipoContabilidade" Multiplicity="0..1" />
+          <End Role="NomenReferencias" Type="Self.NomenReferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContabilidades">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Principal>
+            <Dependent Role="NomenReferencias">
+              <PropertyRef Name="TipoContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CowContabilidadEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asientos" EntityType="Self.Asiento" />
+          <EntitySet Name="AsientosManuales" EntityType="Self.AsientosManuale" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuenta" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresa" />
+          <EntitySet Name="NomenReferencias" EntityType="Self.NomenReferencia" />
+          <EntitySet Name="TipoContabilidades" EntityType="Self.TipoContabilidade" />
+          <AssociationSet Name="Fk_Asientos_Cuentas" Association="Self.Fk_Asientos_Cuentas">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Asientos" EntitySet="Asientos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Asientos_NomenReferencias" Association="Self.fk_Asientos_NomenReferencias">
+            <End Role="NomenReferencias" EntitySet="NomenReferencias" />
+            <End Role="Asientos" EntitySet="Asientos" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship10" Association="Self.Relationship10">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Empresas_TipoContabilidades" Association="Self.Fk_Empresas_TipoContabilidades">
+            <End Role="TipoContabilidades" EntitySet="TipoContabilidades" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_NomenReferencias_TipoContabilidades" Association="Self.Fk_NomenReferencias_TipoContabilidades">
+            <End Role="TipoContabilidades" EntitySet="TipoContabilidades" />
+            <End Role="NomenReferencias" EntitySet="NomenReferencias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CowContabilidadModelStoreContainer" CdmEntityContainer="CowContabilidadEntities">
+          <EntitySetMapping Name="Asientos">
+            <EntityTypeMapping TypeName="CowContabilidadModel.Asiento">
+              <MappingFragment StoreEntitySet="Asientos">
+                <ScalarProperty Name="AsientoID" ColumnName="AsientoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Ej" ColumnName="Ej" />
+                <ScalarProperty Name="Nro" ColumnName="Nro" />
+                <ScalarProperty Name="Subd" ColumnName="Subd" />
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="Tl" ColumnName="Tl" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsientosManuales">
+            <EntityTypeMapping TypeName="CowContabilidadModel.AsientosManuale">
+              <MappingFragment StoreEntitySet="AsientosManuales">
+                <ScalarProperty Name="AsientoManual" ColumnName="AsientoManual" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Ej" ColumnName="Ej" />
+                <ScalarProperty Name="Subd" ColumnName="Subd" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="AsientoCuadrado" ColumnName="AsientoCuadrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuentas">
+            <EntityTypeMapping TypeName="CowContabilidadModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Imputable" ColumnName="Imputable" />
+                <ScalarProperty Name="EmpresaID" ColumnName="EmpresaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="CowContabilidadModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="EmpresaID" ColumnName="EmpresaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoContabilidadID" ColumnName="TipoContabilidadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NomenReferencias">
+            <EntityTypeMapping TypeName="CowContabilidadModel.NomenReferencia">
+              <MappingFragment StoreEntitySet="NomenReferencias">
+                <ScalarProperty Name="Nro" ColumnName="Nro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoContabilidadID" ColumnName="TipoContabilidadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoContabilidades">
+            <EntityTypeMapping TypeName="CowContabilidadModel.TipoContabilidade">
+              <MappingFragment StoreEntitySet="TipoContabilidades">
+                <ScalarProperty Name="TipoContabilidadID" ColumnName="TipoContabilidadID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
