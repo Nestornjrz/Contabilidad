@@ -10,6 +10,10 @@ namespace Conta.Api.Core.Controllers
     public class ValuesController : Controller
     {
         // GET api/values
+        /// <summary>
+        /// Probando a ver si funciona el comentario en swagger
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<string> Get()
         {
