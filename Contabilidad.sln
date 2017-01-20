@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Explicacion", "Explicacion"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conta.Api", "Conta.Api\Conta.Api.csproj", "{9B3F25E0-D4BD-468B-A3F7-2FABD733D72B}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Conta.Api.Core", "Conta.Api.Core\Conta.Api.Core.xproj", "{5B5F689C-5823-428A-A6EF-38519DCEC9F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{9B3F25E0-D4BD-468B-A3F7-2FABD733D72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B3F25E0-D4BD-468B-A3F7-2FABD733D72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B3F25E0-D4BD-468B-A3F7-2FABD733D72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5F689C-5823-428A-A6EF-38519DCEC9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5F689C-5823-428A-A6EF-38519DCEC9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5F689C-5823-428A-A6EF-38519DCEC9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5F689C-5823-428A-A6EF-38519DCEC9F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{22D4438F-4799-401D-9A03-9C45FAAD41C2} = {1AA59C24-1531-43B2-AA2F-E16AB159BEE5}
 		{9B3F25E0-D4BD-468B-A3F7-2FABD733D72B} = {9BF8424E-BDAA-4B96-906C-F5D94621F4AA}
+		{5B5F689C-5823-428A-A6EF-38519DCEC9F7} = {9BF8424E-BDAA-4B96-906C-F5D94621F4AA}
 	EndGlobalSection
 EndGlobal
