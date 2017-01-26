@@ -20,3 +20,7 @@ Este es un proyecto de contabilidad, cuyo objetivo es poder llevar la contabilid
 * **Domain**
   * Aqui estan la logica de la aplicacion y el acceso a datos por medio de ENTITYFRAMEWORK 6.X
 
+## SEGURIDAD
+
+Mas adelante voy a controlar los accesos a la aplicacion por medio de [IdentityServer3](https://identityserver.github.io/Documentation/docsv2/overview/mvcGettingStarted.html)
+
