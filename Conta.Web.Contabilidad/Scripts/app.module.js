@@ -11,14 +11,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 ///<reference path="./../typings/globals/core-js/index.d.ts"/>
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
+///Componente raiz
 var app_component_1 = require('./app.component');
+////Componentes utilizados
+var welcome_component_1 = require('./components/home/welcome.component');
+////Servicios
+var nomenReferencias_service_1 = require('./services/nomenReferencias.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot([
+                    { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+                    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+                    { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+                ])
+            ],
+            declarations: [
+                //Raiz
+                app_component_1.AppComponent,
+                //Propios
+                welcome_component_1.WelcomeComponent
+            ],
+            providers: [nomenReferencias_service_1.NomenReferenciasService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

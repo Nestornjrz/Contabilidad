@@ -189,11 +189,14 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="gulpfile.js" />
+    <Content Include="Images\contabilidad.jpeg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="package.json" />
     <Content Include="readme.md" />
+    <Content Include="Scripts\home\welcome.component.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\home\welcome.component.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -206,6 +209,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\systemjs.config.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="tsScripts\components\home\welcome.component.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -257,7 +261,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="tsScripts\app.component.ts" />
     <TypeScriptCompile Include="tsScripts\app.module.ts" />
+    <TypeScriptCompile Include="tsScripts\components\home\welcome.component.ts" />
+    <TypeScriptCompile Include="tsScripts\dtos\nomenReferenciaDto.ts" />
     <TypeScriptCompile Include="tsScripts\main.ts" />
+    <TypeScriptCompile Include="tsScripts\services\nomenReferencias.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
