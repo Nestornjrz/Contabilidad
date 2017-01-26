@@ -98,6 +98,7 @@
       <DependentUpon>ContabilidadData.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ContabilidadData.Context.tt">

@@ -8,6 +8,7 @@ Este es un proyecto de contabilidad, cuyo objetivo es poder llevar la contabilid
 * Asp.Net 
 * Angular 2 (Esta por salir Angular 4, asi que lo voy a pasar a eso cuando este estable)
 * Web Api 2
+* SqlServer 2016
 
 ## CONSTA DE 4 CAPAS
 * **Presentacion**
