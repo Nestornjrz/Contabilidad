@@ -190,6 +190,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="gulpfile.js" />
     <Content Include="Images\contabilidad.jpeg" />
+    <Content Include="Images\ganaderia.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="package.json" />
