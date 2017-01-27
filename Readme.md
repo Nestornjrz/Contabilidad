@@ -8,6 +8,7 @@ Este es un proyecto de contabilidad, cuyo objetivo es poder llevar la contabilid
 * Asp.Net 
 * Angular 2 (Esta por salir [Angular 4](https://github.com/angular/angular/blob/master/CHANGELOG.md#400-beta5-2017-01-25) , asi que lo voy a pasar a eso cuando este estable)
 * Web Api 2
+  * [Swegger](http://swagger.io/) para facilitar ver las APIs de una manera mas "amigable"
 * SqlServer 2016
 
 ## CONSTA DE 4 CAPAS
