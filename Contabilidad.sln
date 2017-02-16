@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-STS", "5-STS", "{677AEBEE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conta.Sts.IdentityServer", "Conta.Sts.IdentityServer\Conta.Sts.IdentityServer.csproj", "{B937F212-2A92-4096-9455-A96160261218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conta.Sts.Constants", "Conta.Sts.Constants\Conta.Sts.Constants.csproj", "{5D11DC33-5C68-4D1C-AA9C-C39A263351E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{B937F212-2A92-4096-9455-A96160261218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B937F212-2A92-4096-9455-A96160261218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B937F212-2A92-4096-9455-A96160261218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D11DC33-5C68-4D1C-AA9C-C39A263351E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D11DC33-5C68-4D1C-AA9C-C39A263351E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D11DC33-5C68-4D1C-AA9C-C39A263351E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D11DC33-5C68-4D1C-AA9C-C39A263351E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 		{D976F2A7-99B5-4EC2-A261-00A9CDD6471B} = {34BFD271-8A27-470D-9B31-FE07AFF21EF7}
 		{1CB02574-D033-4F8D-92D8-601A7B7FF70F} = {9BF8424E-BDAA-4B96-906C-F5D94621F4AA}
 		{B937F212-2A92-4096-9455-A96160261218} = {677AEBEE-A09C-44FC-8DD4-B36B692A699E}
+		{5D11DC33-5C68-4D1C-AA9C-C39A263351E9} = {677AEBEE-A09C-44FC-8DD4-B36B692A699E}
 	EndGlobalSection
 EndGlobal
