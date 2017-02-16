@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Apis", "2-Apis", "{061803
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conta.Web.Contabilidad", "Conta.Web.Contabilidad\Conta.Web.Contabilidad.csproj", "{1CB02574-D033-4F8D-92D8-601A7B7FF70F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-STS", "5-STS", "{677AEBEE-A09C-44FC-8DD4-B36B692A699E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conta.Sts.IdentityServer", "Conta.Sts.IdentityServer\Conta.Sts.IdentityServer.csproj", "{B937F212-2A92-4096-9455-A96160261218}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +62,10 @@ Global
 		{1CB02574-D033-4F8D-92D8-601A7B7FF70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB02574-D033-4F8D-92D8-601A7B7FF70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB02574-D033-4F8D-92D8-601A7B7FF70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B937F212-2A92-4096-9455-A96160261218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B937F212-2A92-4096-9455-A96160261218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B937F212-2A92-4096-9455-A96160261218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B937F212-2A92-4096-9455-A96160261218}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +77,6 @@ Global
 		{44A163BF-6343-4DC4-A178-525392829DAB} = {1AA59C24-1531-43B2-AA2F-E16AB159BEE5}
 		{D976F2A7-99B5-4EC2-A261-00A9CDD6471B} = {34BFD271-8A27-470D-9B31-FE07AFF21EF7}
 		{1CB02574-D033-4F8D-92D8-601A7B7FF70F} = {9BF8424E-BDAA-4B96-906C-F5D94621F4AA}
+		{B937F212-2A92-4096-9455-A96160261218} = {677AEBEE-A09C-44FC-8DD4-B36B692A699E}
 	EndGlobalSection
 EndGlobal
