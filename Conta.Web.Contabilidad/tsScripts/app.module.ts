@@ -15,9 +15,9 @@ import { NomenReferenciasService } from './services/nomenReferencias.service';
         BrowserModule,
         HttpModule,
         RouterModule.forRoot([
-            { path: 'welcome', component: WelcomeComponent },
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-            { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+            { path: 'app/welcome', component: WelcomeComponent },
+            { path: '', redirectTo: 'app/welcome', pathMatch: 'full' },
+            { path: '**', redirectTo: 'app/welcome', pathMatch: 'full' }
         ])
     ],
     declarations: [
